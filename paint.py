@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import colorchooser
+from tkinter import ttk
 
 class PaintApp:
     def __init__(self, root):
@@ -37,8 +38,9 @@ class PaintApp:
         frame = tk.Frame(self.root, bg="gray")
         frame.pack(fill=tk.BOTH, expand=True)
 
-        brush_button = tk.Button(frame, text="Brush Size", command=lambda: self.change_brush_size(2), width=10)
-        brush_button.grid(row=0, column=0)
+        brush_slider = ttk.Scale(frame, from_=1, to=20, orient=tk.HORIZONTAL, command=self.change_brush_size)
+        brush_slider.set(self.brush_size)
+        brush_slider.grid(row=0, column=0)
 
         color_button = tk.Button(frame, text="Color", command=self.change_color, width=10)
         color_button.grid(row=0, column=1)
